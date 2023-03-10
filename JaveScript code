@@ -1,0 +1,23 @@
+function Magic() {
+  this.stack = [];
+
+  this.spellStack = function(args) {
+
+  if (!args && this.stack.length > 0) {
+    return(this.stack.pop());}
+
+  else if (!args && this.stack.length == 0) {
+    throw 'Error';}
+    
+  if (args.type == 'instant') {
+    this.stack.push(args);
+    return this.stack.length;} 
+    
+  else if (args.type == 'sorcery' && this.stack.length == 0) {
+    this.stack.push(args);
+    return this.stack.length;}
+    
+  else if (args.type == 'sorcery' && this.stack.length > 0) {
+    throw 'Error';} 
+  }
+}
